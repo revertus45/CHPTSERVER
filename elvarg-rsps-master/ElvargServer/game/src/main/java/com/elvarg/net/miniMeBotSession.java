@@ -1,16 +1,10 @@
 package com.elvarg.net;
 
-import com.elvarg.game.World;
 import com.elvarg.game.entity.impl.player.Player;
 import com.elvarg.net.codec.PacketDecoder;
-import com.elvarg.net.codec.PacketEncoder;
 import com.elvarg.net.login.LoginDetailsMessage;
-import com.elvarg.net.login.LoginResponsePacket;
-import com.elvarg.net.login.LoginResponses;
 import com.elvarg.net.packet.Packet;
 import com.elvarg.net.packet.PacketBuilder;
-import com.elvarg.net.packet.PacketConstants;
-import com.elvarg.util.Misc;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.channel.*;
 import io.netty.channel.socket.ServerSocketChannel;
@@ -22,7 +16,7 @@ import io.netty.util.AttributeKey;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 
-public class PlayerBotSession extends PlayerSession {
+public class miniMeBotSession extends PlayerSession {
 
     private Player player;
 
@@ -30,7 +24,7 @@ public class PlayerBotSession extends PlayerSession {
      * Creates a new {@link PlayerSession}.
      *
      */
-    public PlayerBotSession() {
+    public miniMeBotSession() {
         super(new SocketChannel() {
             @Override
             public ServerSocketChannel parent() {
