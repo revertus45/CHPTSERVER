@@ -3,11 +3,9 @@ package com.elvarg.game.entity.impl.playerbot;
 import com.elvarg.game.GameConstants;
 import com.elvarg.game.World;
 import com.elvarg.game.content.presets.Presetables;
-import com.elvarg.game.definition.MiniMeBotDefinition;
 import com.elvarg.game.definition.PlayerBotDefinition;
 import com.elvarg.game.entity.impl.player.Player;
 import com.elvarg.game.entity.impl.playerbot.commands.*;
-import com.elvarg.net.miniMeBotSession.*;
 import com.elvarg.game.entity.impl.playerbot.interaction.ChatInteraction;
 import com.elvarg.game.entity.impl.playerbot.interaction.CombatInteraction;
 import com.elvarg.game.entity.impl.playerbot.interaction.MovementInteraction;
@@ -18,7 +16,7 @@ import com.elvarg.game.model.Location;
 import com.elvarg.net.PlayerBotSession;
 import com.elvarg.util.Misc;
 
-public class miniMeBot extends PlayerBot {//this is call a constuctor
+public class miniMeBot extends PlayerBot {
 
     public enum InteractionState {
         IDLE,
@@ -35,7 +33,8 @@ public class miniMeBot extends PlayerBot {//this is call a constuctor
     private final Location spawnPosition = GameConstants.DEFAULT_LOCATION;
 
     // The current interaction of this PlayerBot
-    private InteractionState currentState = InteractionState.IDLE;
+    private PlayerBot.InteractionState currentState = PlayerBot.InteractionState.IDLE;
+
 
     private BotCommand activeCommand;
 
@@ -62,7 +61,7 @@ public class miniMeBot extends PlayerBot {//this is call a constuctor
     /**
      * Creates this player bot from a given definition.
      */
-    public miniMeBot(MiniMeBotDefinition definition) {
+    public miniMeBot(PlayerBotDefinition definition) {
         super(new PlayerBotSession(), definition.getSpawnLocation());
 
         this.setUsername(definition.getUsername()).setLongUsername(Misc.stringToLong(definition.getUsername()))

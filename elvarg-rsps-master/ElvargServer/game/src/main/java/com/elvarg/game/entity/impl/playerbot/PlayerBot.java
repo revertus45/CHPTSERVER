@@ -4,7 +4,6 @@ import com.elvarg.game.GameConstants;
 import com.elvarg.game.World;
 import com.elvarg.game.content.presets.Presetables;
 import com.elvarg.game.definition.PlayerBotDefinition;
-import com.elvarg.game.entity.impl.Mobile;
 import com.elvarg.game.entity.impl.player.Player;
 import com.elvarg.game.entity.impl.playerbot.commands.*;
 import com.elvarg.game.entity.impl.playerbot.interaction.*;
@@ -12,9 +11,14 @@ import com.elvarg.game.entity.updating.PlayerUpdating;
 import com.elvarg.game.model.ChatMessage;
 import com.elvarg.game.model.Location;
 import com.elvarg.net.PlayerBotSession;
+import com.elvarg.net.PlayerSession;
 import com.elvarg.util.Misc;
 
 public class PlayerBot extends Player {
+
+    public PlayerBot(PlayerBotSession playerBotSession, Location spawnLocation) {
+        super();
+    }
 
     public enum InteractionState {
         IDLE,
@@ -58,6 +62,16 @@ public class PlayerBot extends Player {
     /**
      * Creates this player bot from a given definition.
      */
+
+    public PlayerBot(PlayerSession session, Location spawn, PlayerBotDefinition definition, MovementInteraction movementInteraction, ChatInteraction chatInteraction, TradingInteraction tradingInteraction, CombatInteraction combatInteraction) {
+        super(session, spawn);
+        this.definition = definition;
+        this.movementInteraction = movementInteraction;
+        this.chatInteraction = chatInteraction;
+        this.tradingInteraction = tradingInteraction;
+        this.combatInteraction = combatInteraction;
+    }
+
     public PlayerBot(PlayerBotDefinition definition) {
         super(new PlayerBotSession(), definition.getSpawnLocation());
 
